@@ -1,17 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
+
 import { Layout } from 'antd';
 
 import Login from '../components/Login/Login';
+import Dashboard from '../components/Dashboard';
+import PublicRoute from '../components/PublicRoute';
+import PrivateRoute from '../components/PrivateRoute';
+
+const history = createBrowserHistory();
 
 const AppRoutes = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <Switch>
       <Layout>
-        <Route exact path="/login" component={Login} />
+        <PublicRoute exact path="/login" component={Login} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
       </Layout>
     </Switch>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRoutes;

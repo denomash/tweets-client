@@ -6,21 +6,23 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 
 class Login extends React.Component {
-  onSuccess(response) {
-    const { login } = this.props;
+  authLogin = id => {
+    console.log(this.props);
 
+    this.props.authLogin(id);
+  };
+
+  onSuccess = response => {
     response.json().then(body => {
-      console.log(JSON.stringify(body));
-
-      login(body.id);
+      this.props.authLogin(body.id);
     });
-  }
+  };
 
-  onFailed(error) {
+  onFailed = error => {
     console.log(error);
 
     alert(error);
-  }
+  };
 
   render() {
     const { Content } = Layout;
@@ -40,7 +42,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: id => dispatch(login(id))
+  authLogin: id => dispatch(login(id))
 });
 
 export default connect(null, mapDispatchToProps)(Login);
