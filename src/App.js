@@ -1,14 +1,19 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
 import 'antd/dist/antd.css';
-import Login from './components/Login/Login';
+
+import AppRoutes from './routes/AppRoutes';
+import configureStore from './store/configureStore';
+
+const store = configureStore();
+
+store.dispatch({ type: 'TEST', message: 'test Success' });
 
 const App = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/login" component={Login} />
-    </Switch>
-  </BrowserRouter>
+  <Provider store={store}>
+    <AppRoutes />
+  </Provider>
 );
 
 export default App;

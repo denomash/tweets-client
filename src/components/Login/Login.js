@@ -1,16 +1,18 @@
 import React from 'react';
 import TwitterLogin from 'react-twitter-auth';
 
-import 'antd/dist/antd.css';
 import { Layout } from 'antd';
-const { Content } = Layout;
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
 
 class Login extends React.Component {
   onSuccess(response) {
+    const { login } = this.props;
+
     response.json().then(body => {
       console.log(JSON.stringify(body));
 
-      alert(JSON.stringify(body));
+      login(body.id);
     });
   }
 
@@ -21,20 +23,24 @@ class Login extends React.Component {
   }
 
   render() {
+    const { Content } = Layout;
+
     return (
-      <Layout>
-        <Content>
-          <TwitterLogin
-            loginUrl="http://localhost:8080/auth/twitter"
-            onFailure={this.onFailed}
-            onSuccess={this.onSuccess}
-            requestTokenUrl="http://localhost:8080/auth/twitter/reverse"
-            forceLogin={true}
-          />
-        </Content>
-      </Layout>
+      <Content>
+        <TwitterLogin
+          loginUrl="http://localhost:8080/auth/twitter"
+          onFailure={this.onFailed}
+          onSuccess={this.onSuccess}
+          requestTokenUrl="http://localhost:8080/auth/twitter/reverse"
+          forceLogin={true}
+        />
+      </Content>
     );
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  login: id => dispatch(login(id))
+});
+
+export default connect(null, mapDispatchToProps)(Login);
