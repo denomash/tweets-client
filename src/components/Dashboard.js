@@ -2,7 +2,7 @@ import React from 'react';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="twitter">
       <h1>You are now logged in!!</h1>
     </div>
   );

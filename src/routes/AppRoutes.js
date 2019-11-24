@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import { Layout } from 'antd';

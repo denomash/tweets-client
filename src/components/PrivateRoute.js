@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
+import Header from './Header';
+
 const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => {
   return (
     <div>
@@ -10,6 +12,7 @@ const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => {
         component={props =>
           isAuthenticated ? (
             <div>
+              <Header />
               <Component {...props} />
             </div>
           ) : (

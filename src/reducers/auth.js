@@ -4,10 +4,8 @@ export default (state = {}, action) => {
       return {
         id: action.id
       };
-    case 'TEST':
-      return {
-        message: action.message
-      };
+    case 'LOGOUT':
+      return {};
 
     default:
       return state;

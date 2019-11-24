@@ -7,21 +7,18 @@ import { login } from '../../actions/auth';
 
 class Login extends React.Component {
   authLogin = id => {
-    console.log(this.props);
-
     this.props.authLogin(id);
   };
 
   onSuccess = response => {
     response.json().then(body => {
+      console.log(body.id);
       this.props.authLogin(body.id);
     });
   };
 
   onFailed = error => {
     console.log(error);
-
-    alert(error);
   };
 
   render() {
@@ -29,13 +26,19 @@ class Login extends React.Component {
 
     return (
       <Content>
-        <TwitterLogin
-          loginUrl="http://localhost:8080/auth/twitter"
-          onFailure={this.onFailed}
-          onSuccess={this.onSuccess}
-          requestTokenUrl="http://localhost:8080/auth/twitter/reverse"
-          forceLogin={true}
-        />
+        <div className="twitter">
+          <div className="box-layout__box">
+            <h1 className="box-layout__title">Tweet</h1>
+            <p>It's time to get your expenses under control.</p>
+            <TwitterLogin
+              loginUrl="/auth/twitter"
+              onFailure={this.onFailed}
+              onSuccess={this.onSuccess}
+              requestTokenUrl="/auth/twitter/reverse"
+              forceLogin={true}
+            />
+          </div>
+        </div>
       </Content>
     );
   }
