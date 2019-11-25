@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { Card, Avatar } from 'antd';
 
 const Tweet = ({ tweet }) => {
@@ -10,6 +11,7 @@ const Tweet = ({ tweet }) => {
           <div className="tweet__content-header">
             <h1>{tweet.user.screen_name}</h1>
             <p>@{tweet.user.name}</p>
+            <p>{moment(tweet.created_at).format('MMM DDD')}</p>
           </div>
 
           <p>{tweet.text}</p>
