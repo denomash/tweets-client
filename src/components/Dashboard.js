@@ -12,7 +12,6 @@ class Dashboard extends React.Component {
     const response = await axios.get('/twitter/timeline');
 
     this.setState({ tweets: response.data });
-    console.log(response.data);
   };
   render() {
     const { tweets } = this.state;
