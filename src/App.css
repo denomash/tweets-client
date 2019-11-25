@@ -3,6 +3,13 @@
   padding: 0 1.6rem;
   max-width: 80rem;
 }
+.u-margin-top-big {
+  margin-top: 50px;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 20px;
+}
 
 .twitter {
   min-height: 100vh;
@@ -60,4 +67,24 @@
 .button--link {
   background: none;
   font-size: 17px;
+}
+
+.tweet {
+  display: flex;
+}
+
+.tweet__content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.tweet__content-header {
+  display: flex;
+  align-items: center;
+}
+
+.tweet__content-header > p,
+h1 {
+  margin-right: 10px;
 }
